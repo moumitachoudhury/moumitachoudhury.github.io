@@ -60,7 +60,7 @@ CSEDU Book Club [See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB)
 <img src="images/book_club2.jpg?raw=true"  height="300" width="220"/>
 
 ---
-<button name="button">[Click me](onclick="http://www.google.com")</button>
+<button name="button">[Click me]("http://www.google.com")</button>
 
 
 <p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
