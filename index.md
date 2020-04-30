@@ -51,8 +51,13 @@ Undergraduate Thesis, Department of Computer Science and Engineering, University
 - A java based demo project to visualize well known algorithms.
 - Contains step by step visualization, codes, problem links on specific topic to help students learn faster.
 <img src="images/algo_gif.gif?raw=true"/>
+
 ---
 
+CSEDU Book Club[See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB)[Android Project](https://github.com/amit-sarker/CSEDUBookClub-Android)
+- A website and an android app for book sharing and reviews for the reading club of department of CSE, University of Dhaka.
+
+---
 [Project 2 Title](/pdf/sample_presentation.pdf)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
