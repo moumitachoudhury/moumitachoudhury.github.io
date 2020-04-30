@@ -17,6 +17,16 @@
 1. **A Particle Swarm Based Algorithm for Functional Distributed Constraint Optimization Problems.**
 Moumita Choudhury, Saaduddin Mahmud, and Md. Mosaddek Khan. 
 In the proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence (AAAI 2020).
+<details>
+  <summary>Read Abstract</summary>
+  
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
+
 2. **AED: An Anytime Evolutionary DCOP Algorithm.**
 Saaduddin Mahmud, Moumita Choudhury, Md. Mosaddek Khan, Long Tran-Thanh, and Nicholas R. Jennings.
 Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020).
@@ -60,7 +70,7 @@ CSEDU Book Club [See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB)
 <img src="images/book_club2.jpg?raw=true"  height="300" width="220"/>
 
 ---
-<button name="button">[Click me]("http://www.google.com")</button>
+<button name="button">[Click me](http://www.google.com)</button>
 
 
 <p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
