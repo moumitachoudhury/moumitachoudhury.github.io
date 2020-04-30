@@ -50,7 +50,7 @@ Undergraduate Thesis, Department of Computer Science and Engineering, University
 [AL.GO - An Interactive Algorithm Visualizer](https://github.com/moumitachoudhury/TrackMe)
 - A java based demo project to visualize well known algorithms.
 - Contains step by step visualization, codes, problem links on specific topic to help students learn faster.
-<img src="images/algo.jpg?raw=true"/>
+<img src="images/algo_gif.jpg?raw=true"/>
 ---
 
 [Project 2 Title](/pdf/sample_presentation.pdf)
