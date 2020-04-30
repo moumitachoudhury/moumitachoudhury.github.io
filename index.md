@@ -11,29 +11,50 @@
 - January 2020: Successfully defended my undergraduate thesis!
 - November 2019: AAAI paper on **A Particle Swarm Based Algorithm for Functional Distributed Constraint Optimization Problems** accepted.
 
+---
+
 ### Researches and Publications 
 1. **A Particle Swarm Based Algorithm for Functional Distributed Constraint Optimization Problems.**
+
 Moumita Choudhury, Saaduddin Mahmud, and Md. Mosaddek Khan. 
+
 In the proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence (AAAI 2020).
 2. **AED: An Anytime Evolutionary DCOP Algorithm.**
+
 Saaduddin Mahmud, Moumita Choudhury, Md. Mosaddek Khan, Long Tran-Thanh, and Nicholas R. Jennings.
+
 Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020).
+
 3. **Learning Optimal Temperature Region for Solving Mixed Integer Functional DCOPs.**
+
 Saaduddin Mahmud, Md. Mosaddek Khan, Moumita Choudhury, Long Tran-Thanh, and Nicholas R. Jennings.
+
 Accepted in the proceedings of the 29th International Joint Conference on Artificial Intelligence (IJCAI-PRICAI 2020).
 4. **C-CoCoA: A Continuous Cooperative Constraint Approximation Algorithm to Solve Functional DCOPs.**
+
 Amit Sarker, Abdullahil Baki Arif, Moumita Choudhury, Md. Mosaddek Khan.
+
 Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020). (Extended Abstract)
 5. **Applying Population-Based Algorithms to Solve Large (F)DCOPs.**
+
 Moumita Choudhury and Saaduddin Mahmud.
+
 Undergraduate Thesis, Department of Computer Science and Engineering, University Of Dhaka, 2020.
 
+---
 
 ### Academic Projects 
 [My Food Diary](https://github.com/moumitachoudhury/CalorieCounterGEB)
 - An android app for keeping track of daily food and water consumption and track weight.
 - AI based automated food suggestions and goal oriented motivation.
 <img src="images/calorie_poster.png?raw=true"/>
+
+---
+
+[Track me](https://github.com/moumitachoudhury/TrackMe)
+- An android app for monitoring and managing personal vehicle.
+- Clustering based approach to detect anomaly in driving pattern and notify the car owner.
+<img src="images/track_me.png?raw=true"/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
