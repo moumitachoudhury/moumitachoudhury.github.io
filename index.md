@@ -16,21 +16,13 @@
 ### Researches and Publications 
 1. **A Particle Swarm Based Algorithm for Functional Distributed Constraint Optimization Problems.**
 Moumita Choudhury, Saaduddin Mahmud, and Md. Mosaddek Khan. 
-In the proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence (AAAI 2020).
-<details>
-  <summary>####Read Abstract</summary>
-  
-Distributed Constraint Optimization Problems (DCOPs) are a widely studied constraint handling framework. The objective of a DCOP algorithm is to optimize a global objective function that can be described as the aggregation of several distributed constraint cost functions. In a DCOP, each of these functions is defined by a set of discrete variables. However, in many applications, such as target tracking or sleep scheduling in sensor networks, continuous valued variables are more suited than the discrete ones. Considering this, Functional DCOPs (F-DCOPs) have been proposed that can explicitly model a problem containing continuous variables. Nevertheless, state-of-the-art F-DCOPs approaches experience onerous memory or computation overhead. To address this issue, we propose a new F-DCOP algorithm, namely
-Particle Swarm based F-DCOP (PFD), which is inspired by a meta-heuristic, Particle Swarm Optimization (PSO). Although it has been successfully applied to many continuous optimization problems, the potential of PSO has not been utilized in F-DCOPs. To be exact, PFD devises a distributed method of solution construction while significantly reducing the computation and memory requirements. Moreover,
-we theoretically prove that PFD is an anytime algorithm. Finally, our empirical results indicate that PFD outperforms the state-of-the-art approaches in terms of solution quality and computation overhead.
-</details>
-
+In the proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence (AAAI 2020). [Read the Paper](https://arxiv.org/abs/1909.06168)
 2. **AED: An Anytime Evolutionary DCOP Algorithm.**
 Saaduddin Mahmud, Moumita Choudhury, Md. Mosaddek Khan, Long Tran-Thanh, and Nicholas R. Jennings.
-Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020).
+Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020).[Read the paper](https://arxiv.org/abs/1909.06254)
 3. **Learning Optimal Temperature Region for Solving Mixed Integer Functional DCOPs.**
 Saaduddin Mahmud, Md. Mosaddek Khan, Moumita Choudhury, Long Tran-Thanh, and Nicholas R. Jennings.
-Accepted in the proceedings of the 29th International Joint Conference on Artificial Intelligence (IJCAI-PRICAI 2020).
+Accepted in the proceedings of the 29th International Joint Conference on Artificial Intelligence (IJCAI-PRICAI 2020).[Read the paper](https://arxiv.org/abs/2002.12001)
 4. **C-CoCoA: A Continuous Cooperative Constraint Approximation Algorithm to Solve Functional DCOPs.**
 Amit Sarker, Abdullahil Baki Arif, Moumita Choudhury, Md. Mosaddek Khan.
 Accepted in the proceedings of the 19th International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS 2020). (Extended Abstract)
