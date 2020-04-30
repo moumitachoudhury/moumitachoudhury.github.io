@@ -1,5 +1,5 @@
-## Portfolio [My New Page](/test_page)
-
+## About 
+I am an undergraduate student at Department of Computer Science and Engineering, University of Dhaka. My current research interest includes Artificial Intelligence, specifically, Multi Agent Systems and Optimization. Download my full CV from [here](/pdf/Moumita_Choudhury_s_CV.pdf)
 ---
 
 ### News
@@ -60,7 +60,7 @@ CSEDU Book Club [See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB)
 <img src="images/book_club2.jpg?raw=true"  height="300" width="220"/>
 
 ---
-<button name="button">[Click me](http://www.google.com)</button>
+
 
 
 <p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
