@@ -33,7 +33,7 @@ Undergraduate Thesis, Department of Computer Science and Engineering, University
 [My Food Diary](https://github.com/moumitachoudhury/CalorieCounterGEB)
 - An android app for keeping track of daily food and water consumption and track weight.
 - AI based automated food suggestions and goal oriented motivation.
-[Food app](https://img.youtube.com/vi/w_jX8y96qbo&t=140s/0.jpg)](https://www.youtube.com/watch?v=w_jX8y96qbo&t=140s)
+<img src="images/calorie_poster.png?raw=true"/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
