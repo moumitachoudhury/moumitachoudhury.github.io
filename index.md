@@ -54,16 +54,8 @@ Undergraduate Thesis, Department of Computer Science and Engineering, University
 
 ---
 
-CSEDU Book Club[See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB)[Android Project](https://github.com/amit-sarker/CSEDUBookClub-Android)
+CSEDU Book Club [See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB) [See Android Project](https://github.com/amit-sarker/CSEDUBookClub-Android)
 - A website and an android app for book sharing and reviews for the reading club of department of CSE, University of Dhaka.
-
----
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
----
-[Project 3 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
 
