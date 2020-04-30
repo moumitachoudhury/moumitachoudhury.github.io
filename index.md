@@ -56,8 +56,8 @@ Undergraduate Thesis, Department of Computer Science and Engineering, University
 
 CSEDU Book Club [See Web Project](https://github.com/amit-099/CSEDUBookClub-WEB) [See Android Project](https://github.com/amit-sarker/CSEDUBookClub-Android)
 - A website and an android app for book sharing and reviews for the reading club of department of CSE, University of Dhaka.
-<img src="images/book_club1.jpg?raw=true"  height="42" width="42"/>
-<img src="images/book_club2.jpg?raw=true"  height="42" width="42"/>
+<img src="images/book_club1.jpg?raw=true"  height="150" width="200"/>
+<img src="images/book_club2.jpg?raw=true"  height="150" width="200"/>
 ---
 <p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
 <!-- Remove above link if you don't want to attibute -->
