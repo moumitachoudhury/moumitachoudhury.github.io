@@ -1,5 +1,8 @@
 ## About 
-I am an undergraduate student at Department of Computer Science and Engineering, University of Dhaka. My current research interest includes Artificial Intelligence, specifically, Multi Agent Systems and Optimization. 
+I am a full-time research assistant at Cognitive Agents and Interaction Lab (CAIL), University of Dhaka. Before joining the lab, I was an undergrad at the CSE department, University Of Dhaka. 
+My current research interest includes: 
+1. Multi Agent Systems and Optimization.
+2. AI for Social Impact and Sustainability. 
 
 ###[Download my CV](/pdf/Moumita_Choudhury_s_CV.pdf).
 
