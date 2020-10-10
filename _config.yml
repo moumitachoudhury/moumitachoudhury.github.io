@@ -1,9 +1,0 @@
-title: Moumita Choudhury # your name (or website title) here
-logo: "/images/pro3.png?raw=true" # your photo (or logo) here
-description: > # your text below (remove <br> elements if you don't need line breaks)
-  Undergraduate student at Department of Computer Science and Engineering, University of Dhaka.
-  <br><br>
-  <a href="https://www.linkedin.com/in/moumita-choudhury-77991911b/">View My LinkedIn Profile</a> 
-  <br><br>
-theme: jekyll-theme-minimal
-google_analytics: UA-000000-0 # your Google Analytics tracking ID here
