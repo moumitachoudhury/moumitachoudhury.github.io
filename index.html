@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -401,7 +401,8 @@
       <li><a href="#publications">publications</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">light</button>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">dark</button>
+    <button class="theme-btn" onclick="toggleMusic()" id="musicBtn" title="Toggle music">♪ off</button>
   </div>
 </nav>
 
@@ -458,7 +459,7 @@
         <div class="hero-side">
           <!-- Jamini Roy style flat border frame around photo -->
           <div class="avatar-frame">
-            <img src="images/moumita_circle.JPG" alt="Moumita Choudhury" class="avatar-img" />
+            <img src="images/moumita_circle.png" alt="Moumita Choudhury" class="avatar-img" />
           </div>
           <div class="social-grid">
             <a href="https://scholar.google.com/citations?user=8Vrg6fsAAAAJ&hl=en" class="slink" target="_blank">scholar</a>
@@ -897,8 +898,14 @@ function spawnVFX(x, y) {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 1300);
 }
+let musicOn = false;
+function toggleMusic() {
+  musicOn = !musicOn;
+  document.getElementById('musicBtn').textContent = musicOn ? '♪ on' : '♪ off';
+}
 let lastNote = 0, lastPos = {x:0,y:0};
 document.addEventListener('mousemove', e => {
+  if (!musicOn) return;
   const now = Date.now();
   const d = Math.hypot(e.clientX - lastPos.x, e.clientY - lastPos.y);
   if (d > 60 && now - lastNote > 120) {
