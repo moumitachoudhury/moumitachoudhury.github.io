@@ -8,31 +8,36 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /*
+   * Palette drawn from Jamini Roy's earthy folk pigments —
+   * lamp-black, sindoor red, turmeric ochre, leaf green, and
+   * the warm cream of old Bengali manuscript paper.
+   */
   :root {
-    --bg: #0c0c0f;
-    --bg2: #111116;
-    --text: #e5e2dc;
-    --muted: #6e6c66;
-    --subtle: #3a3835;
-    --accent: #9d7de8;
-    --accent2: #3ab4d8;
-    --accent3: #5ec491;
-    --gold: #c4a55a;
-    --card: rgba(255,255,255,0.025);
-    --border: rgba(255,255,255,0.065);
+    --bg:      #0e0b07;
+    --bg2:     #181410;
+    --text:    #ede4ce;
+    --muted:   #7a6e58;
+    --subtle:  #3a3020;
+    --accent:  #c84b31;   /* sindoor / terracotta */
+    --accent2: #c4963a;   /* turmeric ochre       */
+    --accent3: #5c7d42;   /* leaf green           */
+    --ink:     #1a1208;
+    --card:    rgba(255,240,200,0.03);
+    --border:  rgba(200,160,80,0.1);
   }
   [data-theme="light"] {
-    --bg: #f8f7f4;
-    --bg2: #f0efeb;
-    --text: #17161a;
-    --muted: #6a6762;
-    --subtle: #d4d2cc;
-    --accent: #5c35b8;
-    --accent2: #0771a0;
-    --accent3: #1a7a4e;
-    --gold: #8a6820;
-    --card: rgba(0,0,0,0.02);
-    --border: rgba(0,0,0,0.075);
+    --bg:      #f5edda;   /* aged manuscript cream */
+    --bg2:     #ede4cc;
+    --text:    #1a1208;
+    --muted:   #6b5e44;
+    --subtle:  #c8b890;
+    --accent:  #b03a22;
+    --accent2: #946e18;
+    --accent3: #3d5e28;
+    --ink:     #0e0b07;
+    --card:    rgba(0,0,0,0.025);
+    --border:  rgba(100,70,20,0.13);
   }
 
   html { scroll-behavior: smooth; }
@@ -42,108 +47,131 @@
     font-family: 'Georgia', serif;
     overflow-x: hidden;
     cursor: none;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.4s, color 0.4s;
+    /* very subtle linen weave texture */
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='rgba(200,150,60,0.025)'/%3E%3Crect x='2' y='2' width='1' height='1' fill='rgba(200,150,60,0.025)'/%3E%3C/svg%3E");
   }
+  [data-theme="light"] body {
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='rgba(100,60,10,0.04)'/%3E%3Crect x='2' y='2' width='1' height='1' fill='rgba(100,60,10,0.04)'/%3E%3C/svg%3E");
+  }
+
   canvas#bg {
     position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: 0; pointer-events: none; opacity: 0.7;
+    z-index: 0; pointer-events: none; opacity: 0.6;
   }
+
   #cursor {
-    position: fixed; width: 9px; height: 9px;
+    position: fixed; width: 10px; height: 10px;
     background: var(--accent); border-radius: 50%;
     pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
+    transform: translate(-50%,-50%);
   }
   #cursor-ring {
     position: fixed; width: 30px; height: 30px;
-    border: 1px solid rgba(157,125,232,0.3);
+    border: 1px solid rgba(200,75,49,0.35);
     border-radius: 50%; pointer-events: none;
-    z-index: 9998; transform: translate(-50%, -50%);
+    z-index: 9998; transform: translate(-50%,-50%);
     transition: all 0.14s ease;
   }
 
   /* ── Navigation ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 0 3rem;
-    height: 56px;
+    height: 56px; padding: 0 3rem;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(12,12,15,0.8);
-    backdrop-filter: blur(16px);
+    background: rgba(14,11,7,0.82);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
-    transition: background 0.3s;
+    transition: background 0.4s;
   }
-  [data-theme="light"] nav { background: rgba(248,247,244,0.85); }
+  [data-theme="light"] nav { background: rgba(245,237,218,0.88); }
   nav .logo {
-    font-size: 0.9rem; letter-spacing: 0.1em;
-    color: var(--text); font-family: monospace;
-    font-weight: 400; text-decoration: none; opacity: 0.8;
+    font-family: 'Georgia', serif; font-size: 0.95rem;
+    color: var(--text); text-decoration: none; letter-spacing: 0.06em;
+    opacity: 0.85;
   }
   .nav-right { display: flex; align-items: center; gap: 2rem; }
   nav ul { list-style: none; display: flex; gap: 1.8rem; }
   nav a {
     text-decoration: none; color: var(--muted);
-    font-size: 0.78rem; letter-spacing: 0.1em;
-    font-family: monospace; transition: color 0.2s;
-    text-transform: lowercase;
+    font-family: monospace; font-size: 0.78rem; letter-spacing: 0.09em;
+    transition: color 0.2s;
   }
   nav a:hover { color: var(--text); }
-  .theme-toggle {
+  .theme-btn {
     background: none; border: 1px solid var(--border);
     border-radius: 2px; padding: 0.26rem 0.65rem;
     cursor: pointer; font-family: monospace; font-size: 0.7rem;
-    color: var(--muted); letter-spacing: 0.08em;
-    transition: all 0.2s;
+    color: var(--muted); letter-spacing: 0.07em; transition: all 0.2s;
   }
-  .theme-toggle:hover { border-color: var(--subtle); color: var(--text); }
+  .theme-btn:hover { border-color: var(--accent); color: var(--text); }
 
   main { position: relative; z-index: 1; }
   .container { max-width: 880px; margin: 0 auto; padding: 0 2.5rem; }
   section { padding: 5rem 0; }
 
-  /* ── Section meta labels ── */
-  .meta-label {
-    font-family: monospace; font-size: 0.7rem;
-    color: var(--muted); letter-spacing: 0.22em;
-    text-transform: uppercase; margin-bottom: 0.5rem;
-    display: block;
+  /* ── Decorative section divider (Jamini Roy border motif) ── */
+  .sec-head { margin-bottom: 2.4rem; }
+  .sec-label {
+    font-family: monospace; font-size: 0.68rem; letter-spacing: 0.24em;
+    color: var(--accent2); text-transform: uppercase; display: block;
+    margin-bottom: 0.5rem;
   }
-  h2 { font-size: 1.6rem; font-weight: 400; color: var(--text); margin-bottom: 0.5rem; }
-  .rule { width: 28px; height: 1px; background: var(--accent); opacity: 0.5; margin: 0.7rem 0 2.2rem; }
+  h2 { font-size: 1.6rem; font-weight: 400; color: var(--text); }
+  .folk-rule {
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-top: 0.75rem;
+  }
+  .folk-rule::before,
+  .folk-rule::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0.4;
+  }
+  .folk-diamond {
+    width: 7px; height: 7px;
+    background: var(--accent); transform: rotate(45deg);
+    flex-shrink: 0; opacity: 0.7;
+  }
 
   /* ── Hero ── */
   #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 56px; }
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 4rem; align-items: start;
-    padding-top: 3rem;
+    display: grid; grid-template-columns: 1fr 220px;
+    gap: 4rem; align-items: start; padding-top: 3rem;
   }
-  .hero-name-block { margin-bottom: 1.8rem; }
-  .hero-name-block h1 {
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 400; line-height: 1.1; color: var(--text);
-    margin-bottom: 0.4rem; letter-spacing: -0.01em;
+  .hero-name { margin-bottom: 1.8rem; }
+  .hero-name h1 {
+    font-size: clamp(2rem,4.5vw,3rem); font-weight: 400;
+    line-height: 1.1; color: var(--text); letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  /* a thin terracotta rule under the name — like a Kalighat pat border */
+  .name-underline {
+    height: 2px; width: 100%;
+    background: linear-gradient(to right, var(--accent), var(--accent2), transparent);
+    opacity: 0.45; margin-top: 0.5rem;
   }
   .hero-title {
-    font-family: monospace; font-size: 0.85rem;
-    color: var(--accent2); letter-spacing: 0.05em;
+    font-family: monospace; font-size: 0.84rem;
+    color: var(--accent2); letter-spacing: 0.05em; margin-top: 0.5rem;
   }
-  .hero-bio { color: var(--muted); line-height: 1.82; font-size: 0.95rem; }
-  .hero-bio + .hero-bio { margin-top: 0.9rem; }
-  .hero-bio a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .hero-bio { color: var(--muted); line-height: 1.82; font-size: 0.95rem; margin-top: 1rem; }
+  .hero-bio a {
+    color: var(--accent2); text-decoration: none;
+    border-bottom: 1px solid rgba(196,150,58,0.3); transition: border-color 0.2s;
+  }
   .hero-bio a:hover { border-color: var(--accent2); }
 
-  .interests-row { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .itags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 1.2rem; }
   .itag {
     font-family: monospace; font-size: 0.68rem;
     padding: 0.22rem 0.65rem; border: 1px solid var(--border);
     border-radius: 2px; color: var(--muted); letter-spacing: 0.04em;
     transition: border-color 0.2s, color 0.2s;
   }
-  .itag:hover { border-color: var(--subtle); color: var(--text); }
+  .itag:hover { border-color: var(--accent); color: var(--text); }
 
   .hero-cta { display: flex; gap: 0.7rem; margin-top: 1.8rem; flex-wrap: wrap; }
   .btn {
@@ -152,18 +180,24 @@
     text-decoration: none; letter-spacing: 0.07em;
     transition: all 0.2s; display: inline-block;
   }
-  .btn-primary { background: rgba(157,125,232,0.1); border: 1px solid rgba(157,125,232,0.4); color: var(--accent); }
-  .btn-primary:hover { background: rgba(157,125,232,0.17); }
+  .btn-primary { background: rgba(200,75,49,0.12); border: 1px solid rgba(200,75,49,0.45); color: var(--accent); }
+  .btn-primary:hover { background: rgba(200,75,49,0.2); }
   .btn-ghost { border: 1px solid var(--border); color: var(--muted); }
   .btn-ghost:hover { border-color: var(--subtle); color: var(--text); }
 
-  /* Sidebar (photo + social + timeline) */
+  /* Sidebar */
   .hero-side { display: flex; flex-direction: column; gap: 1.2rem; }
+  .avatar-frame {
+    /* Jamini Roy style: thick flat border, no shadows */
+    border: 2px solid var(--accent);
+    padding: 4px; background: var(--bg2);
+    display: inline-block;
+  }
   .avatar-img {
-    width: 100%; aspect-ratio: 1/1;
-    border-radius: 3px; object-fit: cover; object-position: top center;
-    border: 1px solid var(--border); display: block;
-    filter: grayscale(8%);
+    width: 100%; display: block;
+    object-fit: cover; object-position: top center;
+    aspect-ratio: 1/1;
+    filter: sepia(12%) contrast(1.02);
   }
   .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
   .slink {
@@ -173,46 +207,44 @@
     border-radius: 2px; text-align: center; letter-spacing: 0.04em;
     transition: all 0.2s;
   }
-  .slink:hover { color: var(--text); border-color: var(--subtle); }
+  .slink:hover { color: var(--text); border-color: var(--accent); }
 
-  /* Mini timeline in hero */
-  .mini-timeline { margin-top: 0.5rem; }
-  .mini-timeline .meta-label { margin-bottom: 0.8rem; }
-  .mt-item { display: flex; gap: 0.7rem; margin-bottom: 0.75rem; align-items: baseline; }
-  .mt-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
-    flex-shrink: 0; margin-top: 0.4rem;
-  }
-  .mt-dot.active { background: var(--accent3); opacity: 0.8; }
-  .mt-text { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
-  .mt-text strong { color: var(--text); font-weight: 400; display: block; font-size: 0.82rem; }
-  .mt-date { font-family: monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.03em; }
+  /* Mini timeline */
+  .mini-timeline { margin-top: 0.3rem; }
+  .mini-timeline .sec-label { margin-bottom: 0.75rem; }
+  .mt-item { display: flex; gap: 0.7rem; margin-bottom: 0.7rem; align-items: baseline; }
+  .mt-dot { width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; margin-top: 0.4rem; opacity: 0.5; }
+  .mt-dot.active { background: var(--accent3); opacity: 0.85; }
+  .mt-text { font-size: 0.79rem; color: var(--muted); line-height: 1.52; }
+  .mt-text strong { color: var(--text); font-weight: 400; display: block; font-size: 0.8rem; }
+  .mt-date { font-family: monospace; font-size: 0.63rem; color: var(--muted); }
 
   /* ── News ── */
   #news { padding-top: 0; }
   .news-list { display: grid; gap: 0.55rem; }
   .news-item {
-    display: grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items: baseline;
-    padding: 0.75rem 1rem; border-radius: 3px;
-    background: var(--card); border: 1px solid var(--border);
+    display: grid; grid-template-columns: 68px 1fr; gap: 1rem; align-items: baseline;
+    padding: 0.75rem 1rem; background: var(--card);
+    border: 1px solid var(--border); border-radius: 3px;
     transition: border-color 0.2s;
+    /* left accent inspired by Jamini Roy's flat bold borders */
+    border-left: 2px solid transparent;
   }
-  .news-item:hover { border-color: var(--subtle); }
-  .news-date { font-family: monospace; font-size: 0.67rem; color: var(--accent); letter-spacing: 0.04em; }
+  .news-item:hover { border-left-color: var(--accent); border-color: var(--subtle); }
+  .news-date { font-family: monospace; font-size: 0.67rem; color: var(--accent2); letter-spacing: 0.04em; }
   .news-text { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
   .news-text a { color: var(--accent2); text-decoration: none; }
   .badge-new {
-    font-family: monospace; font-size: 0.6rem; letter-spacing: 0.08em;
-    background: rgba(157,125,232,0.12); border: 1px solid rgba(157,125,232,0.3);
+    font-family: monospace; font-size: 0.6rem; letter-spacing: 0.07em;
+    background: rgba(200,75,49,0.12); border: 1px solid rgba(200,75,49,0.35);
     color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 2px;
-    margin-left: 0.5rem; vertical-align: middle; text-transform: uppercase;
+    margin-left: 0.5rem; text-transform: uppercase; vertical-align: middle;
   }
-  .badge-spotlight {
-    font-family: monospace; font-size: 0.6rem; letter-spacing: 0.08em;
-    background: rgba(196,165,90,0.12); border: 1px solid rgba(196,165,90,0.35);
-    color: var(--gold); padding: 0.1rem 0.4rem; border-radius: 2px;
-    margin-left: 0.5rem; vertical-align: middle; text-transform: uppercase;
+  .badge-spot {
+    font-family: monospace; font-size: 0.6rem; letter-spacing: 0.07em;
+    background: rgba(196,150,58,0.12); border: 1px solid rgba(196,150,58,0.35);
+    color: var(--accent2); padding: 0.1rem 0.4rem; border-radius: 2px;
+    margin-left: 0.5rem; text-transform: uppercase; vertical-align: middle;
   }
 
   /* ── Research ── */
@@ -220,79 +252,81 @@
   .research-item {
     display: grid; grid-template-columns: 1fr 220px; gap: 2rem; align-items: center;
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1.6rem 1.8rem;
+    border-radius: 3px; padding: 1.6rem 1.8rem;
     transition: border-color 0.25s;
     position: relative; overflow: hidden;
   }
-  .research-item::after {
+  /* Jamini Roy flat color left stripe */
+  .research-item::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 2px; background: var(--accent); opacity: 0;
-    transition: opacity 0.25s;
+    width: 3px; opacity: 0; transition: opacity 0.25s;
   }
+  .research-item:nth-child(1)::before { background: var(--accent); }
+  .research-item:nth-child(2)::before { background: var(--accent2); }
+  .research-item:nth-child(3)::before { background: var(--accent3); }
   .research-item:hover { border-color: var(--subtle); }
-  .research-item:hover::after { opacity: 0.6; }
-  .research-item:nth-child(2)::after { background: var(--accent2); }
-  .research-item:nth-child(3)::after { background: var(--accent3); }
+  .research-item:hover::before { opacity: 0.7; }
   .research-content h3 { font-size: 0.97rem; font-weight: 400; color: var(--text); margin-bottom: 0.55rem; line-height: 1.4; }
   .research-content p { font-size: 0.86rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.85rem; }
-  .research-img { width: 100%; border-radius: 3px; border: 1px solid var(--border); object-fit: cover; display: block; }
+  .research-img { width: 100%; border-radius: 2px; border: 1px solid var(--border); display: block; object-fit: cover; }
   .tag-row { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
   .tag {
     font-family: monospace; font-size: 0.65rem;
     padding: 0.15rem 0.5rem; border-radius: 2px;
-    background: rgba(58,180,216,0.06); border: 1px solid rgba(58,180,216,0.16);
+    background: rgba(196,150,58,0.07); border: 1px solid rgba(196,150,58,0.18);
     color: var(--accent2);
   }
   .plinks { display: flex; gap: 0.4rem; flex-wrap: wrap; }
   .plink {
     font-family: monospace; font-size: 0.67rem;
     color: var(--accent); text-decoration: none;
-    border: 1px solid rgba(157,125,232,0.25);
+    border: 1px solid rgba(200,75,49,0.28);
     padding: 0.16rem 0.55rem; border-radius: 2px; transition: background 0.2s;
   }
-  .plink:hover { background: rgba(157,125,232,0.08); }
+  .plink:hover { background: rgba(200,75,49,0.1); }
 
   /* ── Publications ── */
-  .pub-group { margin-bottom: 2.5rem; }
+  .pub-group { margin-bottom: 2.6rem; }
   .pub-group-label {
-    font-family: monospace; font-size: 0.68rem; letter-spacing: 0.18em;
+    font-family: monospace; font-size: 0.67rem; letter-spacing: 0.2em;
     color: var(--muted); text-transform: uppercase;
     padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
     margin-bottom: 1rem; display: block;
   }
-  .pub-list { display: grid; gap: 0.75rem; }
+  .pub-list { display: grid; gap: 0.7rem; }
   .pub-item {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1.1rem 1.3rem;
-    transition: border-color 0.2s; position: relative;
+    border-radius: 3px; padding: 1.1rem 1.3rem;
+    transition: border-color 0.2s;
+    border-left: 2px solid transparent;
   }
-  .pub-item:hover { border-color: var(--subtle); }
-  .pub-item.spotlight { border-left: 2px solid rgba(196,165,90,0.5); }
+  .pub-item:hover { border-color: var(--subtle); border-left-color: var(--accent3); }
+  .pub-item.spotlight { border-left: 2px solid rgba(196,150,58,0.55); }
   .pub-venue {
     font-family: monospace; font-size: 0.67rem;
-    color: var(--accent3); letter-spacing: 0.09em; margin-bottom: 0.3rem;
+    color: var(--accent3); letter-spacing: 0.08em; margin-bottom: 0.3rem;
   }
   .pub-title { font-size: 0.92rem; color: var(--text); line-height: 1.48; margin-bottom: 0.3rem; }
   .pub-authors { font-size: 0.8rem; color: var(--muted); font-style: italic; margin-bottom: 0.2rem; }
   .pub-note { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.55rem; line-height: 1.5; }
-  .pub-badges { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.55rem; }
+  .pub-badges { margin-bottom: 0.5rem; }
   .pub-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
   .pub-btn {
     font-family: monospace; font-size: 0.66rem;
     color: var(--accent2); text-decoration: none;
-    border: 1px solid rgba(58,180,216,0.2); padding: 0.16rem 0.6rem;
+    border: 1px solid rgba(196,150,58,0.22); padding: 0.16rem 0.6rem;
     border-radius: 2px; background: none; cursor: pointer;
     transition: background 0.2s; letter-spacing: 0.03em;
   }
-  .pub-btn:hover { background: rgba(58,180,216,0.06); }
+  .pub-btn:hover { background: rgba(196,150,58,0.08); }
   .pub-expand { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
   .pub-expand.open { max-height: 500px; }
   .pub-expand-inner {
-    background: rgba(255,255,255,0.015); border: 1px solid var(--border);
-    border-radius: 3px; padding: 0.85rem 1rem;
+    background: rgba(200,150,60,0.03); border: 1px solid var(--border);
+    border-radius: 2px; padding: 0.85rem 1rem;
     font-size: 0.83rem; color: var(--muted); line-height: 1.72; margin-top: 0.65rem;
   }
-  [data-theme="light"] .pub-expand-inner { background: rgba(0,0,0,0.015); }
+  [data-theme="light"] .pub-expand-inner { background: rgba(100,60,10,0.03); }
   .pub-expand-inner pre {
     font-family: monospace; font-size: 0.73rem;
     white-space: pre-wrap; word-break: break-word;
@@ -300,7 +334,7 @@
   }
   .elabel {
     font-family: monospace; font-size: 0.63rem; letter-spacing: 0.14em;
-    color: var(--accent); text-transform: uppercase; display: block; margin-bottom: 0.4rem;
+    color: var(--accent2); text-transform: uppercase; display: block; margin-bottom: 0.4rem;
   }
 
   /* ── Contact ── */
@@ -313,35 +347,42 @@
     border: 1px solid var(--border); border-radius: 2px;
     letter-spacing: 0.05em; transition: all 0.2s;
   }
-  .clink:hover { color: var(--text); border-color: var(--subtle); }
-  .clink.primary { color: var(--accent); border-color: rgba(157,125,232,0.35); background: rgba(157,125,232,0.06); }
-  .clink.primary:hover { background: rgba(157,125,232,0.12); }
+  .clink:hover { color: var(--text); border-color: var(--accent); }
+  .clink.primary { color: var(--accent); border-color: rgba(200,75,49,0.4); background: rgba(200,75,49,0.07); }
+  .clink.primary:hover { background: rgba(200,75,49,0.14); }
 
+  /* ── Footer ── */
   footer {
     text-align: center; padding: 2rem;
     font-family: monospace; font-size: 0.68rem;
     color: var(--muted); border-top: 1px solid var(--border);
     position: relative; z-index: 1; letter-spacing: 0.06em;
   }
+  footer .folk-footer {
+    display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+    margin-bottom: 0.5rem; opacity: 0.3;
+  }
+  footer .folk-footer span { font-size: 0.55rem; }
+  footer .folk-footer .d { display: inline-block; width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); }
 
-  /* Note burst */
+  /* ── Note burst (ASCII music notation style) ── */
   .note-burst {
     position: fixed; pointer-events: none; z-index: 9990;
-    font-size: 0.9rem; animation: noteFly 1.2s ease-out forwards;
-    transform: translate(-50%, -50%); font-family: monospace;
+    font-size: 0.88rem; animation: noteFly 1.3s ease-out forwards;
+    transform: translate(-50%,-50%); font-family: monospace;
+    font-weight: bold;
   }
   @keyframes noteFly {
     0%   { opacity: 1; transform: translate(-50%,-50%) scale(0.5); }
-    30%  { opacity: 1; transform: translate(calc(-50% + var(--dx)), calc(-50% - 26px)) scale(1); }
-    100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 68px)) scale(0.7); }
+    25%  { opacity: 1; transform: translate(calc(-50% + var(--dx)), calc(-50% - 24px)) scale(1.1); }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 65px)) scale(0.8); }
   }
 
   @media (max-width: 740px) {
     nav { padding: 0 1.5rem; }
     nav ul { gap: 1rem; }
     .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-side { flex-direction: row; flex-wrap: wrap; }
-    .avatar-img { width: 140px; height: 140px; }
+    .avatar-frame { width: 140px; }
     .research-item { grid-template-columns: 1fr; }
   }
 </style>
@@ -360,19 +401,20 @@
       <li><a href="#publications">publications</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">light</button>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">light</button>
   </div>
 </nav>
 
 <main>
 
-  <!-- ── Hero + About merged ── -->
+  <!-- ── Hero ── -->
   <section id="hero">
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="hero-name-block">
+          <div class="hero-name">
             <h1>Moumita Choudhury</h1>
+            <div class="name-underline"></div>
             <p class="hero-title">PhD Candidate &nbsp;·&nbsp; Computer Science &nbsp;·&nbsp; UMass Amherst</p>
           </div>
 
@@ -380,8 +422,8 @@
             I am a PhD candidate at the University of Massachusetts Amherst, advised by
             <a href="https://groups.cs.umass.edu/shlomo/" target="_blank">Prof. Shlomo Zilberstein</a>
             in the <a href="https://groups.cs.umass.edu/shlomo/people/" target="_blank">Resource Bounded Reasoning Lab</a>.
-            I completed my M.Sc. in Computer Science at UMass (GPA 3.95/4.00) in May 2024.
-            This summer I am a Research Intern at the
+            I completed my M.Sc. in Computer Science at UMass in 2024.
+            I was also a Research Intern at the
             <a href="https://www.merl.com/" target="_blank">Trustworthy AI group, Mitsubishi Electric Research Lab (MERL)</a>.
           </p>
           <p class="hero-bio" style="margin-top:0.85rem;">
@@ -392,18 +434,18 @@
           </p>
           <p class="hero-bio" style="margin-top:0.85rem;">
             Before UMass I was a Research Assistant at the
-            <a href="http://mmkhansajeeb.com/cail.html" target="_blank">Cognitive Agents and Interaction Lab</a>,
+            <a href="http://mmkhansajeeb.com" target="_blank">Cognitive Agents and Interaction Lab</a>,
             University of Dhaka, and a Junior Lecturer at
             <a href="http://www.aust.edu/" target="_blank">Ahsanullah University of Science and Technology</a>.
             Outside the lab I enjoy singing, painting, and travelling.
           </p>
 
-          <div class="interests-row">
-            <span class="itag">multi-agent RL</span>
-            <span class="itag">AI interpretability</span>
-            <span class="itag">human–AI interaction</span>
+          <div class="itags">
+            <span class="itag">multi-agent LLM fine-tuning</span>
+            <span class="itag">Test-time training</span>
+            <span class="itag">Multi-agent coordination</span>
             <span class="itag">AI safety</span>
-            <span class="itag">game theory</span>
+            <!-- <span class="itag">game theory</span> -->
           </div>
 
           <div class="hero-cta">
@@ -414,7 +456,10 @@
         </div>
 
         <div class="hero-side">
-          <img src="images/moumita_circle.png" alt="Moumita Choudhury" class="avatar-img" />
+          <!-- Jamini Roy style flat border frame around photo -->
+          <div class="avatar-frame">
+            <img src="images/moumita_circle.JPG" alt="Moumita Choudhury" class="avatar-img" />
+          </div>
           <div class="social-grid">
             <a href="https://scholar.google.com/citations?user=8Vrg6fsAAAAJ&hl=en" class="slink" target="_blank">scholar</a>
             <a href="https://www.linkedin.com/in/moumita-choudhury-77991911b/" class="slink" target="_blank">linkedin</a>
@@ -423,7 +468,7 @@
           </div>
 
           <div class="mini-timeline">
-            <span class="meta-label">positions</span>
+            <span class="sec-label">positions</span>
             <div class="mt-item">
               <div class="mt-dot active"></div>
               <div class="mt-text">
@@ -452,13 +497,13 @@
                 <span class="mt-date">Feb – Dec 2020 · Dhaka</span>
               </div>
             </div>
-            <div class="mt-item">
+            <!-- <div class="mt-item">
               <div class="mt-dot"></div>
               <div class="mt-text">
                 <strong>BSc CSE — University of Dhaka</strong>
-                <span class="mt-date">Jan 2016 – Jan 2020 · GPA 3.84</span>
+                <span class="mt-date">Jan 2016 – Jan 2020 </span>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -468,21 +513,22 @@
   <!-- ── News ── -->
   <section id="news" style="padding-top:1rem;">
     <div class="container">
-      <span class="meta-label">recent updates</span>
-      <h2>News</h2>
-      <div class="rule"></div>
+      <div class="sec-head">
+        <span class="sec-label">recent updates</span>
+        <h2>News</h2>
+        <div class="folk-rule"><div class="folk-diamond"></div></div>
+      </div>
       <div class="news-list">
         <div class="news-item">
           <span class="news-date">Jun 2025</span>
           <span class="news-text">
             Starting as a Research Intern at the Trustworthy AI group,
-            <a href="https://www.merl.com/" target="_blank">Mitsubishi Electric Research Lab (MERL)</a>,
-            Boston, MA.
+            <a href="https://www.merl.com/" target="_blank">Mitsubishi Electric Research Lab (MERL)</a>, Boston.
             <span class="badge-new">new</span>
           </span>
         </div>
         <div class="news-item">
-          <span class="news-date">2025</span>
+          <span class="news-date">Nov 2025</span>
           <span class="news-text">
             Paper accepted at AAAI 2026 Workshop on Trust and Control in Agentic AI (TrustAgent) —
             <em>Amplification Effects in Test-Time Reinforcement Learning: Safety and Reasoning Vulnerabilities</em>.
@@ -490,36 +536,23 @@
           </span>
         </div>
         <div class="news-item">
-          <span class="news-date">2025</span>
+          <span class="news-date">Mar 2025</span>
           <span class="news-text">
-            <em>Bayesian Inverse Reinforcement Learning Approach for Policy Summarization</em> accepted at
-            ToM4AI @ AAAI 2025.
-            <span class="badge-spotlight">spotlight · top 16%</span>
-          </span>
-        </div>
-        <div class="news-item">
-          <span class="news-date">2024</span>
-          <span class="news-text">Received conference travel grants for AAMAS 2024 and AAAI 2025.</span>
-        </div>
-        <div class="news-item">
-          <span class="news-date">Mar 2024</span>
-          <span class="news-text">
-            Paper accepted at FLAIRS 2024 —
-            <em>Minimizing Negative Side Effects in Cooperative Multi-Agent Systems using Distributed Coordination</em>.
-            Also appeared as an Extended Abstract at AAMAS 2024.
+            <em>Bayesian Inverse Reinforcement Learning Approach for Policy Summarization</em> accepted at ToM4AI @ AAAI 2025.
+            <span class="badge-spot">spotlight · top 16%</span>
           </span>
         </div>
         <div class="news-item">
           <span class="news-date">May 2024</span>
-          <span class="news-text">Completed M.Sc. in Computer Science at UMass Amherst (GPA 3.95/4.00).</span>
+          <span class="news-text">Completed M.Sc. in Computer Science at UMass Amherst.</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">Mar 2024</span>
+          <span class="news-text">Paper accepted at FLAIRS 2024 and as an Extended Abstract at AAMAS 2024 — <em>Minimizing Negative Side Effects in Cooperative Multi-Agent Systems using Distributed Coordination</em>.</span>
         </div>
         <div class="news-item">
           <span class="news-date">Jun 2022</span>
           <span class="news-text">Received the Professor Victor Lesser Graduate Scholarship in Artificial Intelligence, UMass Amherst.</span>
-        </div>
-        <div class="news-item">
-          <span class="news-date">Sep 2021</span>
-          <span class="news-text">Received CICS PhD Scholarship ($4,000), UMass Amherst.</span>
         </div>
       </div>
     </div>
@@ -528,15 +561,17 @@
   <!-- ── Research ── -->
   <section id="research">
     <div class="container">
-      <span class="meta-label">what I work on</span>
-      <h2>Research</h2>
-      <div class="rule"></div>
+      <div class="sec-head">
+        <span class="sec-label">what I work on</span>
+        <h2>Research</h2>
+        <div class="folk-rule"><div class="folk-diamond"></div></div>
+      </div>
       <div class="research-list">
 
         <div class="research-item">
           <div class="research-content">
-            <h3>Multi-Agent Reinforcement Learning &amp; RL Fine-tuning</h3>
-            <p>I work on optimizing RL fine-tuning pipelines for multi-agent, multi-turn settings and developing post-training techniques for multi-agent and multi-turn LLMs. This includes work on test-time training and trustworthiness, in collaboration with the Trustworthy AI group at MERL.</p>
+            <h3>Multi-Agent Reinforcement Learning Fine-tuning</h3>
+            <p>I work on developing post-training techniques for multi-agent and multi-turn LLMs — including trustworthiness in test-time training.</p>
             <div class="tag-row">
               <span class="tag">multi-agent RL</span><span class="tag">RL fine-tuning</span><span class="tag">LLMs</span><span class="tag">test-time training</span>
             </div>
@@ -584,11 +619,12 @@
   <!-- ── Publications ── -->
   <section id="publications">
     <div class="container">
-      <span class="meta-label">selected work</span>
-      <h2>Publications</h2>
-      <div class="rule"></div>
+      <div class="sec-head">
+        <span class="sec-label">selected work</span>
+        <h2>Publications</h2>
+        <div class="folk-rule"><div class="folk-diamond"></div></div>
+      </div>
 
-      <!-- Workshop -->
       <div class="pub-group">
         <span class="pub-group-label">workshop papers</span>
         <div class="pub-list">
@@ -602,9 +638,7 @@
 
           <div class="pub-item spotlight">
             <p class="pub-venue">ToM4AI @ AAAI 2025</p>
-            <div class="pub-badges">
-              <span class="badge-spotlight">spotlight paper &nbsp;·&nbsp; top 16%</span>
-            </div>
+            <div class="pub-badges"><span class="badge-spot">spotlight paper &nbsp;·&nbsp; top 16%</span></div>
             <p class="pub-title">Bayesian Inverse Reinforcement Learning Approach for Policy Summarization</p>
             <p class="pub-authors"><strong>Moumita Choudhury</strong>, Shuwa Miura, and Shlomo Zilberstein</p>
             <p class="pub-note">To appear in Advancing Artificial Intelligence through Theory of Mind (ToM4AI) @ AAAI 2025.</p>
@@ -623,7 +657,7 @@
             <div class="pub-expand" id="ccocoa-abs">
               <div class="pub-expand-inner">
                 <span class="elabel">Abstract</span>
-                <p>Distributed Constraint Optimization Problems (DCOPs) have been widely used to coordinate interactions in cooperative multi-agent systems. The traditional DCOP model assumes that variables can take only discrete values and constraints' cost functions are defined for every possible value assignment. The Functional DCOP (F-DCOP) model extends this to continuous variables. The existing F-DCOP algorithms experience huge computation and communication overhead. This paper applies continuous non-linear optimization methods on the Cooperative Constraint Approximation (CoCoA) algorithm and empirically shows the algorithm provides high-quality solutions at smaller communication cost and execution time compared to existing F-DCOP algorithms.</p>
+                <p>Distributed Constraint Optimization Problems (DCOPs) have been widely used to coordinate interactions in cooperative multi-agent systems. The Functional DCOP (F-DCOP) model extends the traditional model to continuous variables. The existing F-DCOP algorithms experience huge computation and communication overhead. This paper applies continuous non-linear optimization methods on the Cooperative Constraint Approximation (CoCoA) algorithm and empirically shows the algorithm provides high-quality solutions at smaller cost.</p>
               </div>
             </div>
             <div class="pub-expand" id="ccocoa-bib">
@@ -644,13 +678,12 @@
         </div>
       </div>
 
-      <!-- Conference -->
       <div class="pub-group">
         <span class="pub-group-label">conference papers</span>
         <div class="pub-list">
 
           <div class="pub-item">
-            <p class="pub-venue">FLAIRS 2024 · AAMAS 2024 (Extended Abstract)</p>
+            <p class="pub-venue">FLAIRS 2024 · AAMAS 2024 </p>
             <p class="pub-title">Minimizing Negative Side Effects in Cooperative Multi-Agent Systems Using Distributed Coordination</p>
             <p class="pub-authors"><strong>Moumita Choudhury</strong>, Sandhya Saisubramanian, Hao Zhang, and Shlomo Zilberstein</p>
             <p class="pub-note">The International FLAIRS Conference Proceedings (Vol. 37), 2024. Also appeared as an Extended Abstract at AAMAS 2024.</p>
@@ -676,7 +709,7 @@
             <div class="pub-expand" id="ijcai-abs">
               <div class="pub-expand-inner">
                 <span class="elabel">Abstract</span>
-                <p>Distributed Constraint Optimization Problems (DCOPs) are an important framework for modeling coordinated decision-making in multiagent systems with discrete variables. We combine DCOPs and Functional DCOPs into the Mixed Integer Functional DCOP (MIF-DCOP) framework. We propose Distributed Parallel Simulated Annealing (DPSA), where agents cooperatively learn the optimal parameter configuration while solving the problem. DPSA produces solutions of significantly better quality than state-of-the-art non-exact algorithms across DCOP, F-DCOP, and MIF-DCOP settings.</p>
+                <p>We combine DCOPs and Functional DCOPs into the Mixed Integer Functional DCOP (MIF-DCOP) framework, and propose Distributed Parallel Simulated Annealing (DPSA), where agents cooperatively learn the optimal parameter configuration while solving the problem. DPSA produces solutions of significantly better quality than state-of-the-art non-exact algorithms.</p>
               </div>
             </div>
             <div class="pub-expand" id="ijcai-bib">
@@ -688,8 +721,7 @@
   author={Mahmud, Saaduddin and Khan, Md. Mosaddek and Choudhury, Moumita
           and Tran-Thanh, Long and Jennings, Nicholas R},
   booktitle={Proceedings of IJCAI},
-  pages={268--275},
-  year={2020}
+  pages={268--275}, year={2020}
 }</pre>
               </div>
             </div>
@@ -708,7 +740,7 @@
             <div class="pub-expand" id="aed-abs">
               <div class="pub-expand-inner">
                 <span class="elabel">Abstract</span>
-                <p>We present Anytime Evolutionary DCOP (AED), a novel population-based algorithm that uses evolutionary optimization to solve Distributed Constraint Optimization Problems. Agents cooperatively construct initial random solutions and improve them through a mechanism considering optimistic approximations of local benefits. We prove AED is anytime and present empirical results showing it outperforms state-of-the-art DCOP algorithms in solution quality.</p>
+                <p>We present Anytime Evolutionary DCOP (AED), a novel population-based algorithm that uses evolutionary optimization to solve DCOPs. Agents cooperatively construct random solutions and improve them through a mechanism considering optimistic local benefit approximations. We prove AED is anytime and show it outperforms state-of-the-art DCOP algorithms in solution quality.</p>
               </div>
             </div>
             <div class="pub-expand" id="aed-bib">
@@ -719,8 +751,7 @@
   author={Mahmud, Saaduddin and Choudhury, Moumita and Khan, Md. Mosaddek
           and Tran-Thanh, Long and Jennings, Nicholas R},
   booktitle={Proceedings of AAMAS},
-  pages={825--833},
-  year={2020}
+  pages={825--833}, year={2020}
 }</pre>
               </div>
             </div>
@@ -740,7 +771,7 @@
             <div class="pub-expand" id="pfd-abs">
               <div class="pub-expand-inner">
                 <span class="elabel">Abstract</span>
-                <p>We propose Particle Swarm based F-DCOP (PFD), a new algorithm for Functional DCOPs inspired by Particle Swarm Optimization. PFD devises a distributed method of solution construction that significantly reduces computation and memory requirements. We prove PFD is an anytime algorithm, and empirical results show it outperforms state-of-the-art approaches in solution quality and computation overhead.</p>
+                <p>We propose Particle Swarm based F-DCOP (PFD), a new algorithm for Functional DCOPs inspired by Particle Swarm Optimization. PFD devises a distributed method that significantly reduces computation and memory requirements. We prove PFD is an anytime algorithm, and empirical results show it outperforms state-of-the-art approaches in solution quality and overhead.</p>
               </div>
             </div>
             <div class="pub-expand" id="pfd-bib">
@@ -752,8 +783,7 @@
   author={Choudhury, Moumita and Mahmud, Saaduddin and Khan, Md Mosaddek},
   booktitle={Proceedings of AAAI},
   volume={34}, number={05},
-  pages={7111--7118},
-  year={2020}
+  pages={7111--7118}, year={2020}
 }</pre>
               </div>
             </div>
@@ -762,7 +792,6 @@
         </div>
       </div>
 
-      <!-- Journal -->
       <div class="pub-group">
         <span class="pub-group-label">journal papers</span>
         <div class="pub-list">
@@ -784,9 +813,11 @@
   <!-- ── Contact ── -->
   <section id="contact">
     <div class="container">
-      <span class="meta-label">get in touch</span>
-      <h2>Contact</h2>
-      <div class="rule"></div>
+      <div class="sec-head">
+        <span class="sec-label">get in touch</span>
+        <h2>Contact</h2>
+        <div class="folk-rule"><div class="folk-diamond"></div></div>
+      </div>
       <div class="contact-inner">
         <p>I am happy to discuss research, potential collaborations, or anything else. Feel free to reach out.</p>
         <div class="contact-grid">
@@ -804,6 +835,11 @@
 </main>
 
 <footer>
+  <div class="folk-footer">
+    <span>&#9670;</span><span>&#9670;</span><span>&#9670;</span>
+    <span class="d"></span>
+    <span>&#9670;</span><span>&#9670;</span><span>&#9670;</span>
+  </div>
   &copy; 2025 Moumita Choudhury &nbsp;&middot;&nbsp; UMass Amherst, College of Information and Computer Sciences
 </footer>
 
